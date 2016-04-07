@@ -26,56 +26,37 @@ function handleHashChange() {
 
 window.addEventListener('hashchange', handleHashChange, false);
 
-const routeConfig = [
-    { path: '/',
-        component: App,
-        indexRoute: { component: Dashboard },
-        childRoutes: [
-            { path: 'about', component: About },
-            { path: 'inbox',
-                component: Inbox,
-                childRoutes: [
-                    { path: '/messages/:id', component: Message },
-                    { path: 'messages/:id',
-                        onEnter: function (nextState, replaceState) {
-                            replaceState(null, '/messages/' + nextState.params.id)
-                        }
-                    }
-                ]
-            }
-        ]
+const rootRoute = {
+    path: '/',
+    component: require('./components/layouts/Base'),
+    childRoutes: [
+        //{
+    //    component: require('./components/layouts/Dashboard'),
+    //    indexRoute: {
+    //        //component: require('./components/pages/dashboard/Home/Home')
+    //    },
+    //    childRoutes: [
+    //    ]
+    //},
+    {
+        path: '/login',
+        component: require('./components/pages/Login'),
+        childRoutes: []
+    },
+    {
+        path: '/signup',
+        component: require('./components/pages/Signup'),
+        childRoutes: []
+    },
+    {
+        path: '/error-page',
+        component: require('./components/pages/ErrorPage'),
+        childRoutes: []
     }
-]
-
-React.render(<Router routes={routeConfig} />, document.body)
-
-
-
-
-var App = React.createClass({
-   render : function() {
-       return (
-           <div>
-               <h1>App</h1>
-               <ul>
-                   <li><Link to="/about">About</Link></li>
-                   <li><Link to="/inbox">Inbox</Link></li>
-               </ul>
-               {this.props.children}
-           </div>
-       )
-   }
-});
+    ]
+};
 
 ReactDOM.render(
-    <Router>
-        <Route path="/" component={App}>
-            <Route path="about" component={About} />
-            <Route path="inbox" component={IndexBox} />
-        </Route>
-    </Router>,
+    <Router history={history} routes={rootRoute} />,
     document.getElementById('app')
 );
-
-
-module.exports = App;

@@ -33,7 +33,10 @@ module.exports = {
 
   module: {
     loaders: [
-      { test: /\.jsx?$/, exclude: /node_modules/, loaders: ["babel-loader?stage=0&compact=true"] }
+      { test: /\.jsx?$/, exclude: /node_modules/, loaders: ["babel-loader?stage=0&compact=true"] },
+      { test: /\.css$/, loader: "style!css" },
+      { test: /\.less$/, exclude: /\.useable\.less$/, loader: 'style!css!less' },
+      { test: /\.(png|jpg|jpeg|gif)$/, loader: 'url-loader?limit=10000' }
     ]
   },
 
