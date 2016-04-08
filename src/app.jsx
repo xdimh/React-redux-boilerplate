@@ -4,40 +4,41 @@ import ReactDOM from 'react-dom';
 import Link from 'react-router/lib/Link';
 import Route from 'react-router/lib/Route';
 import Router from 'react-router/lib/Router';
+import hashHistory from 'react-router/lib/hashHistory';
 import createHistory from 'history/lib/createHistory';
 import useBasename from 'history/lib/useBasename';
-import About from './components/about/about';
-import IndexBox from './components/indexbox/indexbox';
 import "./common/styles/app-base.less";
 import NProgress from 'nprogress';
 
 NProgress.configure({ showSpinner: false });
 
+/*
 const history = useBasename(createHistory)({
     basename: '#/'
 });
+*/
 
-history.pushState(null, '/');
+/*history.pushState(null, '/');*/
 
-function handleHashChange() {
+/*function handleHashChange() {
     var path = window.location.hash.substr(1);
     history.pushState(null, path);
 }
 
-window.addEventListener('hashchange', handleHashChange, false);
+window.addEventListener('hashchange', handleHashChange, false);*/
 
 const rootRoute = {
     path: '/',
     component: require('./components/layouts/Base'),
     childRoutes: [
-        //{
-    //    component: require('./components/layouts/Dashboard'),
-    //    indexRoute: {
-    //        //component: require('./components/pages/dashboard/Home/Home')
-    //    },
-    //    childRoutes: [
-    //    ]
-    //},
+    //{
+        //        component: require('./components/layouts/Dashboard'),
+        //        indexRoute: {
+        //            //component: require('./components/pages/dashboard/Home/Home')
+        //        },
+        //        childRoutes: [
+        //        ]
+        //},
     {
         path: '/login',
         component: require('./components/pages/Login'),
@@ -57,6 +58,6 @@ const rootRoute = {
 };
 
 ReactDOM.render(
-    <Router history={history} routes={rootRoute} />,
+    <Router history={hashHistory} routes={rootRoute} />,
     document.getElementById('app')
 );

@@ -1,7 +1,9 @@
 import React from 'react';
 import Router from 'react-router';
-import { Link } from 'react-router';
-import {Panel, Input, Button} from 'react-bootstrap';
+import Link  from 'react-router/lib/Link';
+import Panel from 'react-bootstrap/lib/Panel';
+import Input from 'react-bootstrap/lib/Input';
+import Button from 'react-bootstrap/lib/Button';
 import {History} from 'history';
 
 var LoginPage = React.createClass({
