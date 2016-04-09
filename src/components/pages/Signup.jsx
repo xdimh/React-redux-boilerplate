@@ -4,7 +4,6 @@ import Link  from 'react-router/lib/Link';
 import Panel from 'react-bootstrap/lib/Panel';
 import Input from 'react-bootstrap/lib/Input';
 import Button from 'react-bootstrap/lib/Button';
-import {History} from 'history';
 
 var Signup = React.createClass({
 
@@ -15,8 +14,6 @@ var Signup = React.createClass({
       isSubmitted: false
     };
   },
-
-  mixins: [History],
 
   render: function(){
   
@@ -50,7 +47,6 @@ var Signup = React.createClass({
     e.preventDefault();
     this.props.history.pushState(null, '/dashboard/home');
     // this.transitionTo('dashboard');
-
     return false;
 
   }

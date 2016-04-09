@@ -22,10 +22,8 @@ var ErrorPage = React.createClass({
 					</div>
 				</div>
       </div>
-      
     );
   }
-
 });
 
 export default ErrorPage;

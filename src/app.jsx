@@ -5,27 +5,25 @@ import Link from 'react-router/lib/Link';
 import Route from 'react-router/lib/Route';
 import Router from 'react-router/lib/Router';
 import hashHistory from 'react-router/lib/hashHistory';
-import createHistory from 'history/lib/createHistory';
-import useBasename from 'history/lib/useBasename';
+//import createHistory from 'history/lib/createHistory';
+//import useBasename from 'history/lib/useBasename';
 import "./common/styles/app-base.less";
 import NProgress from 'nprogress';
-
+//import { createHistory, useBasename } from 'history';
 NProgress.configure({ showSpinner: false });
 
-/*
-const history = useBasename(createHistory)({
-    basename: '#/'
-});
-*/
-
-/*history.pushState(null, '/');*/
-
-/*function handleHashChange() {
-    var path = window.location.hash.substr(1);
-    history.pushState(null, path);
-}
-
-window.addEventListener('hashchange', handleHashChange, false);*/
+//const history = useBasename(createHistory)({
+//    basename: '#/'
+//});
+//
+//history.pushState(null, '/');
+//
+//function handleHashChange() {
+//    var path = window.location.hash.substr(1);
+//    history.pushState(null, path);
+//}
+//
+//window.addEventListener('hashchange', handleHashChange, false);
 
 const rootRoute = {
     path: '/',
