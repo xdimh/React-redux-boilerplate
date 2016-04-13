@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import { Provider } from 'react-redux'
 import Link from 'react-router/lib/Link';
 import Route from 'react-router/lib/Route';
 import Router from 'react-router/lib/Router';
@@ -8,10 +8,11 @@ import hashHistory from 'react-router/lib/hashHistory';
 //import createHistory from 'history/lib/createHistory';
 //import useBasename from 'history/lib/useBasename';
 import "./common/styles/app-base.less";
+import appStore from './stores/appStore';
 import NProgress from 'nprogress';
 //import { createHistory, useBasename } from 'history';
 NProgress.configure({ showSpinner: false });
-
+const store = appStore();
 //const history = useBasename(createHistory)({
 //    basename: '#/'
 //});
@@ -28,6 +29,9 @@ NProgress.configure({ showSpinner: false });
 const rootRoute = {
     path: '/',
     component: require('./components/layouts/Base'),
+    indexRoute: {
+        component: require('./components/pages/Login')
+    },
     childRoutes: [
     //{
         //        component: require('./components/layouts/Dashboard'),
@@ -56,6 +60,8 @@ const rootRoute = {
 };
 
 ReactDOM.render(
-    <Router history={hashHistory} routes={rootRoute} />,
+    <Provider store={store}>
+        <Router history={hashHistory} routes={rootRoute} />
+    </Provider>,
     document.getElementById('app')
 );

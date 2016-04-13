@@ -27,6 +27,7 @@
     "react-redux": "^4.4.1",
     "react-router": "^2.0.1",
     "redux": "^3.3.1",
+    "redux-thunk": "^2.0.1",
     "velocity-react": "^1.1.4"
   },
   "devDependencies": {
@@ -40,6 +41,10 @@
     "redux-devtools": "^3.1.1",
     "style-loader": "^0.12.4",
     "url-loader": "^0.5.6",
-    "webpack": "^1.12.14"
+    "webpack": "^1.12.14",
+    "gulp": "^3.9.0",
+    "express": "^4.13.3",
+    "gulp-connect": "^2.2.0",
+    "gulp-watch": "^4.3.5"
   }
 }

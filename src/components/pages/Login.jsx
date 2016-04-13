@@ -4,20 +4,23 @@ import Link  from 'react-router/lib/Link';
 import Panel from 'react-bootstrap/lib/Panel';
 import Input from 'react-bootstrap/lib/Input';
 import Button from 'react-bootstrap/lib/Button';
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import * as loginActions from '../../actions/actions'
 
 var LoginPage = React.createClass({
 
   getInitialState: function(){
-    console.log(this.props);
-    return {
-      loginID: '',
-      password: '',
-      isSubmitted: false
-    };
+      console.log('state:',this.state);
+      console.log('props:',this.props);
+      return {
+
+      }
   },
 
   render: function(){
-  
+      console.log('state in render:',this.state);
+      console.log('props in render:',this.props);
     return <div>
 
         <div className="login-page">
@@ -38,7 +41,6 @@ var LoginPage = React.createClass({
         </div>
         
       </div>
-
   },
 
   setLoginID: function(e) {
@@ -61,13 +63,30 @@ var LoginPage = React.createClass({
 
   handleLogin: function(e){
     e.preventDefault();
-    this.props.history.pushState(null, '/dashboard/home');
-    // this.transitionTo('dashboard');
-
+    //this.props.history.pushState(null, '/dashboard/home');
+    //// this.transitionTo('dashboard');
+    this.props.actions.issueLoginRequest();
     return false;
 
   }
 
 });
 
-export default LoginPage;
+
+function mapStateToProps(state) {
+    return {
+        login: state.login
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(loginActions, dispatch)
+    }
+}
+
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(LoginPage)
